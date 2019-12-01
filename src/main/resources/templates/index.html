@@ -1,42 +1,50 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="utf-8">
-<title>社区入口</title>
-<style type="text/css">
-	body {
-		background-color: #DDD;
-		margin: 0;
-	}
-	#navigation{
-		height: 70px; line-height: 70px; text-align: center; background-color: white;
-	}
-	#bottom{
-		height: 40px; line-height: 40px;text-align: center; color: gray;
-	}
-	.nav{
-		text-decoration: none; color: black;margin: 0 15px;
-	}
-	#banner img{
-		width: 100%; height: 1050px;
-	}
-</style>
+    <meta charset="UTF-8">
+    <title>聊天社区</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <script src="js/bootstrap.min.js" type="application/javascript"></script>
 </head>
 <body>
-	<div id="banner">
-		<img src="img/view.jpg"/></div>
-	<div id="navigation">
-		<a href="../test1.html" class="nav">首页</a>
-		<a href="#" class="nav">开发人员</a>
-		<a href="#" class="nav">产品介绍</a>
-		<a href="#" class="nav">开发文档</a>
-		<a href="#" class="nav">项目前景</a>
-		<a href="#" class="nav">软件下载</a>
-		<a href="#" class="nav">新闻中心</a>
-		<a href="#" class="nav">关于作者</a>
-	</div>
-	<div id="bottom">
-	      版权所有：上海海洋大学杨振中&nbsp;技术支持csdn
-	</div>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">聊天社区</span>
+            </button>
+            <a class="navbar-brand" href="聊天社区">Brand</a>
+        </div>
+
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+            <form class="navbar-form navbar-left">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="搜索问题">
+                </div>
+                <button type="submit" class="btn btn-default">搜索</button>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown" th:if="${session.user != null}">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false" th:text="${session.user.getName()}"><span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">消息中心</a></li>
+                        <li><a href="#">个人资料</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">退出登录</a></li>
+                    </ul>
+                </li>
+                <li th:if="${session.user==null}">
+                    <a href="https://github.com/login/oauth/authorize?client_id=fb07395607e8492b6891&redirect_uri=http://localhost:8853/callback&scope=user&state=1">登录</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
 </body>
 </html>
