@@ -7,6 +7,7 @@ import com.communiity.conmunity.mapper.UserMapper;
 import com.communiity.conmunity.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.expression.spel.ast.NullLiteral;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -45,7 +46,7 @@ public class AuthorizeController {
         accessTokenDTO.setState(state);
         String accessToken = githubProvider.getAccessToken(accessTokenDTO);
         GithubUser githubUser = githubProvider.getUser(accessToken);
-        if (githubUser != null) {
+        if ((githubUser != null)) {
             User user = new User();
             String token = UUID.randomUUID().toString();            //登陆时将github返回的用户信息存入数据库
             user.setToken(token);
