@@ -5,6 +5,8 @@
 [spring web文档](https://spring.io/guides/gs/serving-web-content/)
 [Github OAuth ](https://developer.github.com/apps/building-oauth-apps/creating-an-oauth-app/)
 [okgttp](https://square.github.io/okhttp/)
+[Developer Tools](https://docs.spring.io/spring-boot/docs/2.0.0.RC1/reference/htmlsingle/#using-boot-devtools)
+[Lombok](https://projectlombok.org/)
 
 ##工具
 [Git](https://www.git-scm.com/download/)
