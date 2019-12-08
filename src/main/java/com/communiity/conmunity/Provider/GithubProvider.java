@@ -1,16 +1,14 @@
 package com.communiity.conmunity.Provider;
 
 import com.alibaba.fastjson.JSON;
-import com.communiity.conmunity.dto.AccessTokenDtO;
+import com.communiity.conmunity.dto.AccessTokenDTO;
 import com.communiity.conmunity.dto.GithubUser;
 import okhttp3.*;
 import org.springframework.stereotype.Component;
 
-import java.io.IOException;
-
 @Component
 public class GithubProvider {
-    public String getAccessToken(AccessTokenDtO accessTokenDtO) {
+    public String getAccessToken(AccessTokenDTO accessTokenDtO) {
        MediaType mediaType = MediaType.get("application/json; charset=utf-8");
        OkHttpClient client = new OkHttpClient();
         RequestBody body = RequestBody.create(mediaType, JSON.toJSONString(accessTokenDtO));

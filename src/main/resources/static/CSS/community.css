@@ -9,3 +9,8 @@
     height: 38px;
     width: 38px;
 }
+.text-desc{
+    font-size: 12px;
+    font-weight: normal;
+    color: #999;
+}
