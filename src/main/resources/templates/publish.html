@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>发布</title>
-    <script src="js/jquery-3.4.1.min.js"></script>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="css/community.css">
-    <script src="js/bootstrap.min.js" type="application/javascript"></script>
+    <script src="/js/jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/css/community.css">
+    <script src="/js/bootstrap.min.js" type="application/javascript"></script>
     <style>
         body {
             background: url("img/tree.jpg") no-repeat center 0 fixed;
@@ -25,6 +25,7 @@
             <hr>
 
             <form action="/publish" method="post">
+                <input type="hidden" name="id" th:value="${id}">
                 <div class="form-group">
                     <label for="title">问题标题（简单扼要);</label>
                     <input type="text" class="form-control" name="title" th:value="${title}" id="title" placeholder="问题标题......">
