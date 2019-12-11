@@ -1,12 +1,14 @@
-create table question
+CREATE TABLE QUESTION
 (
-	title VARCHAR(50),
-	description TEXT,
-	gmt_create BIGINT,
-	gmt_modified BIGINT,
-	creator int,
-	comment_count int default 0,
-	view_count int default 0,
-	like_count int default 0,
-	tag VARCHAR(26)
+	ID int AUTO_INCREMENT PRIMARY KEY NOT NULL ,
+	TITLE VARCHAR(50),
+	DESCRIPTION TEXT,
+	GMT_CREATE BIGINT,
+	GMT_MODIFIED BIGINT,
+	CREATOR INT,
+	COMMENT_COUNT INT DEFAULT 0,
+	VIEW_COUNT INT DEFAULT 0,
+	LIKE_COUNT INT DEFAULT 0,
+	TAG VARCHAR(26)
 );
+
