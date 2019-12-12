@@ -2,6 +2,8 @@ package com.Community.conmunity.service;
 
 import com.Community.conmunity.dto.PaginationDTO;
 import com.Community.conmunity.dto.QuestionDTO;
+import com.Community.conmunity.exception.CustomizeErrorCode;
+import com.Community.conmunity.exception.CustomizeException;
 import com.Community.conmunity.mapper.QuestionMapper;
 import com.Community.conmunity.mapper.UserMapper;
 import com.Community.conmunity.model.Question;
@@ -50,7 +52,7 @@ public class QuestionService {
 
 
         for (Question question : questions) {
-            User user = userMapper.findById(question.getCreator());
+            User user = userMapper.selectByPrimaryKey(question.getCreator());
             QuestionDTO questionDTO = new QuestionDTO();
             BeanUtils.copyProperties(question, questionDTO);
             questionDTO.setUser(user);
@@ -88,7 +90,7 @@ public class QuestionService {
         List<QuestionDTO> questionDTOList = new ArrayList<>();
 
         for (Question question : questions) {
-            User user = userMapper.findById(question.getCreator());
+            User user = userMapper.selectByPrimaryKey(question.getCreator());
             QuestionDTO questionDTO = new QuestionDTO();
             BeanUtils.copyProperties(question, questionDTO);
             questionDTO.setUser(user);
@@ -101,9 +103,12 @@ public class QuestionService {
 
     public QuestionDTO getById(Integer id) {
         Question question = questionMapper.getById(id);
+        if (question == null) {
+            throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);
+        }
         QuestionDTO questionDTO = new QuestionDTO();
         BeanUtils.copyProperties(question, questionDTO);
-        User user = userMapper.findById(question.getCreator());
+        User user = userMapper.selectByPrimaryKey(question.getCreator());
         questionDTO.setUser(user);
         return questionDTO;
     }
@@ -117,6 +122,10 @@ public class QuestionService {
             // 更新
             question.setGmtModified(question.getGmtCreate());
             questionMapper.update(question);
+            int updated = questionMapper.update(question);
+            if (updated != 1) {
+                throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);
+            }
         }
     }
 }
