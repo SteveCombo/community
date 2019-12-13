@@ -24,3 +24,4 @@
     TOKEN        CHAR(36)
 '''
 mvn -Dmybatis.generator.overwrite=true mybatis-generator:generate
+mvn flyway:mybatis

@@ -31,7 +31,7 @@ public interface QuestionMapper {
     Question getById(@Param("id") Integer id);
 
 
-    @Update("update question set title = #{title}, description = #{description}, gmt_modified = #{gmtModified}, tag = #{tag} where id = #{id}")
+    @Update("update question set title = #{title}, description = #{description}, gmt_modified = #{gmtModified}, tag = #{tag}, view_count = #{viewCount} where id = #{id}")
     int update(Question question);
 
 }

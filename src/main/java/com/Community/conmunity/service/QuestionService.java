@@ -128,4 +128,11 @@ public class QuestionService {
             }
         }
     }
+
+    public void incView(Integer id) {             //增加阅读数
+        Question updateQuestion = new Question();
+        Question question = questionMapper.getById(id);
+        question.setViewCount(question.getViewCount()+1);
+        questionMapper.update(updateQuestion);
+    }
 }
